@@ -1,0 +1,180 @@
+﻿@using HumanitarianAid.Models
+@model IEnumerable<Admin>
+@{
+    ViewBag.Title = "AdminInfo";
+    Layout = null;
+}
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+
+
+
+
+
+
+
+<body background="~/Content/Images/18.PNG">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="~/Admin/AdminInfo">Humanitarian Aid</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="~/Admin/AdminInfo">
+                            Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/DonorDetails/">Donor Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/NeedyDetails/">Needy Details</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Appeals/Index">Appeal Request</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Donations/index">Donation Request</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Admin/record">Transaction Records</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Admin/Storage">Storage</a>
+                    </li>
+
+
+
+                   
+
+
+
+
+
+
+                </ul>
+
+
+
+
+                <ul>
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="~/Home/Index">Logout</a>
+                    </li>
+                </ul>
+
+
+
+
+
+
+
+            </div>
+
+
+
+        </div>
+    </nav>
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+</body>
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<h2>Admin Informations</h2>
+<table class="table">
+    <tr class="bg-secondary">
+
+        <td>
+            Admin Name
+        </td>
+        <td>
+            Admin Mail
+
+        </td>
+
+        <td>
+            Admin Password
+        </td>
+
+        <td>
+            Admin Address
+        </td>
+
+        <td>
+            Admin Gender
+        </td>
+        <td>
+            Admin Phone No
+        </td>
+
+    </tr>
+
+    @foreach (var admin in Model)
+    {
+        <tr>
+
+            <td>@admin.A_name</td>
+            <td>@admin.A_mail</td>
+            <td>@admin.A_pass</td>
+
+            <td>@admin.A_address</td>
+
+            <td>@admin.A_gender</td>
+            <td>@admin.A_phoneNo</td>
+
+
+
+        </tr>
+
+    }
+
+</table>
+
+

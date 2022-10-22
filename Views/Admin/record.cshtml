@@ -1,0 +1,126 @@
+﻿@model IEnumerable<HumanitarianAid.Models.Records1>
+
+@{
+
+    Layout = null;
+
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="~/Admin/AdminInfo">Humanitarian Aid</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+                    <li>
+                        <div class="align-content-center text-center text-warning"> TRANSACTION RECORD</div>
+                    </li>
+                </ul>
+
+                <ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Admin/AdminInfo">Back</a>
+                    </li>
+                </ul>
+
+               
+
+
+            </div>
+
+        </div>
+    </nav>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+<body background="~/Content/Images/18.PNG">
+    <table class="table">
+        <tr class="bg-secondary">
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.SL)
+            </th>
+
+
+
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.D_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.N_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppealId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Productname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Unit)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.SL)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.D_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.N_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AppealId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Productname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Unit)
+        </td>
+
+
+        <td>
+            @Html.ActionLink("View More", "Info", new { id = item.SL })
+        </td>
+
+
+
+    </tr>
+        }
+
+
+
+
+    </table>
+</body>

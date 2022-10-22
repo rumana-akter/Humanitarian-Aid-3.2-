@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b35c6af95035478fa2563566ca486eb1" Name="Diagram1" ZoomLevel="59">
+        <EntityTypeShape EntityType="HumanitarianAidModel.AdminDetail" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="HumanitarianAidModel.Donationdetail" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HumanitarianAidModel.Donationtable" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HumanitarianAidModel.DonorDetail" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HumanitarianAidModel.LogInAdmin" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HumanitarianAidModel.NeedyDetail" Width="1.5" PointX="6" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HumanitarianAidModel.Record" Width="1.5" PointX="8.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HumanitarianAidModel.Request" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HumanitarianAidModel.DonationCount" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HumanitarianAidModel.Donorrating" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HumanitarianAidModel.Rating" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="HumanitarianAidModel.FK__Donationd__Procd__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="HumanitarianAidModel.FK__Donationde__D_ID__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="HumanitarianAidModel.FK__Donationta__D_ID__164452B1" ManuallyRouted="false" />
+        <AssociationConnector Association="HumanitarianAidModel.FK__Records__P_ID__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="HumanitarianAidModel.FK__Request__P_ID__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="HumanitarianAidModel.FK__DonationCo__D_ID__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="HumanitarianAidModel.FK__Donorratin__D_ID__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="HumanitarianAidModel.FK__Records__D_ID__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="HumanitarianAidModel.FK__Request__D_ID__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="HumanitarianAidModel.FK__Records__N_ID__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="HumanitarianAidModel.FK__Request__N_ID__1DE57479" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HumanitarianAidModel.Appeal" Width="1.5" PointX="8.375" PointY="0.75" />
+        <EntityTypeShape EntityType="HumanitarianAidModel.Donation" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="HumanitarianAidModel.Records1" Width="1.5" PointX="10.375" PointY="3.75" />
+        <EntityTypeShape EntityType="HumanitarianAidModel.DonorActivation" Width="1.5" PointX="10.375" PointY="7.75" />
+        <EntityTypeShape EntityType="HumanitarianAidModel.NeedyActivation" Width="1.5" PointX="10.375" PointY="10.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

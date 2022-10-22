@@ -1,0 +1,1008 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HumanitarianAidModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminDetails">
+          <Key>
+            <PropertyRef Name="A_id" />
+          </Key>
+          <Property Name="A_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="A_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="A_mail" Type="varchar" MaxLength="50" />
+          <Property Name="A_pass" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="A_gender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="A_DOB" Type="date" />
+          <Property Name="A_address" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="A_phoneNo" Type="int" />
+        </EntityType>
+        <EntityType Name="Appeal">
+          <Key>
+            <PropertyRef Name="AppealId" />
+          </Key>
+          <Property Name="AppealId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="N_id" Type="int" />
+          <Property Name="Productname" Type="varchar" MaxLength="40" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Unit" Type="varchar" MaxLength="50" />
+          <Property Name="Story" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Donation">
+          <Key>
+            <PropertyRef Name="DonationId" />
+          </Key>
+          <Property Name="DonationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="D_id" Type="int" />
+          <Property Name="Productname" Type="varchar" MaxLength="40" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Unit" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'HumanitarianAid.dbo.DonationCount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DonationCount">
+          <Key>
+            <PropertyRef Name="D_ID" />
+            <PropertyRef Name="NoOfDonatedProducts" />
+          </Key>
+          <Property Name="D_ID" Type="int" Nullable="false" />
+          <Property Name="NoOfDonatedProducts" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Donationdetails">
+          <Key>
+            <PropertyRef Name="Donationid" />
+          </Key>
+          <Property Name="Donationid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="D_ID" Type="int" Nullable="false" />
+          <Property Name="ProcductID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Donationtable">
+          <Key>
+            <PropertyRef Name="Productid" />
+          </Key>
+          <Property Name="Productid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Producttype" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Productname" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="DateOfDonation" Type="date" Nullable="false" />
+          <Property Name="D_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DonorActivation">
+          <Key>
+            <PropertyRef Name="D_Id" />
+          </Key>
+          <Property Name="D_Id" Type="int" Nullable="false" />
+          <Property Name="ActivationCode" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DonorDetails">
+          <Key>
+            <PropertyRef Name="D_id" />
+          </Key>
+          <Property Name="D_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="D_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="D_mail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="D_Password" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="D_ConfirmPassword" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="D_dob" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="D_age" Type="int" Nullable="false" />
+          <Property Name="D_annualincome" Type="int" Nullable="false" />
+          <Property Name="D_gender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="D_address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="D_phoneNo" Type="int" Nullable="false" />
+          <Property Name="D_nationality" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="D_occupation" Type="varchar" MaxLength="70" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'HumanitarianAid.dbo.Donorratings' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Donorratings">
+          <Key>
+            <PropertyRef Name="D_ID" />
+            <PropertyRef Name="DonorRatings" />
+          </Key>
+          <Property Name="D_ID" Type="int" Nullable="false" />
+          <Property Name="DonorRatings" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LogInAdmin">
+          <Key>
+            <PropertyRef Name="A_pass" />
+          </Key>
+          <Property Name="A_pass" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="A_Mail" Type="nvarchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NeedyActivation">
+          <Key>
+            <PropertyRef Name="N_Id" />
+          </Key>
+          <Property Name="N_Id" Type="int" Nullable="false" />
+          <Property Name="ActivationCode" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NeedyDetails">
+          <Key>
+            <PropertyRef Name="N_id" />
+          </Key>
+          <Property Name="N_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="N_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="N_mail" Type="varchar" MaxLength="50" />
+          <Property Name="N_Password" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="N_ConfirmPassword" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="N_dob" Type="varchar" MaxLength="70" />
+          <Property Name="N_age" Type="int" Nullable="false" />
+          <Property Name="N_annualincome" Type="int" />
+          <Property Name="N_gender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="N_address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="N_phoneNo" Type="int" Nullable="false" />
+          <Property Name="N_nationality" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="N_occupation" Type="varchar" MaxLength="70" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'HumanitarianAid.dbo.Ratings' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Ratings">
+          <Key>
+            <PropertyRef Name="LowestSale" />
+            <PropertyRef Name="HeighestSale" />
+          </Key>
+          <Property Name="LowestSale" Type="int" Nullable="false" />
+          <Property Name="HeighestSale" Type="int" Nullable="false" />
+          <Property Name="ratings" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Records">
+          <Key>
+            <PropertyRef Name="SL" />
+          </Key>
+          <Property Name="SL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="D_ID" Type="int" Nullable="false" />
+          <Property Name="N_ID" Type="int" Nullable="false" />
+          <Property Name="P_ID" Type="int" Nullable="false" />
+          <Property Name="R_ProductName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="unit" Type="nvarchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Records1">
+          <Key>
+            <PropertyRef Name="SL" />
+          </Key>
+          <Property Name="SL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="D_ID" Type="int" Nullable="false" />
+          <Property Name="N_id" Type="int" Nullable="false" />
+          <Property Name="AppealId" Type="int" Nullable="false" />
+          <Property Name="Productname" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="SL" />
+          </Key>
+          <Property Name="SL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="D_ID" Type="int" Nullable="false" />
+          <Property Name="N_ID" Type="int" Nullable="false" />
+          <Property Name="P_ID" Type="int" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="unit" Type="nvarchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__DonationCo__D_ID__239E4DCF">
+          <End Role="DonorDetails" Type="Self.DonorDetails" Multiplicity="1" />
+          <End Role="DonationCount" Type="Self.DonationCount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonorDetails">
+              <PropertyRef Name="D_id" />
+            </Principal>
+            <Dependent Role="DonationCount">
+              <PropertyRef Name="D_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Donationd__Procd__1A14E395">
+          <End Role="Donationtable" Type="Self.Donationtable" Multiplicity="1" />
+          <End Role="Donationdetails" Type="Self.Donationdetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donationtable">
+              <PropertyRef Name="Productid" />
+            </Principal>
+            <Dependent Role="Donationdetails">
+              <PropertyRef Name="ProcductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Donationde__D_ID__1920BF5C">
+          <End Role="DonorDetails" Type="Self.DonorDetails" Multiplicity="1" />
+          <End Role="Donationdetails" Type="Self.Donationdetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonorDetails">
+              <PropertyRef Name="D_id" />
+            </Principal>
+            <Dependent Role="Donationdetails">
+              <PropertyRef Name="D_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Donationta__D_ID__164452B1">
+          <End Role="DonorDetails" Type="Self.DonorDetails" Multiplicity="1" />
+          <End Role="Donationtable" Type="Self.Donationtable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonorDetails">
+              <PropertyRef Name="D_id" />
+            </Principal>
+            <Dependent Role="Donationtable">
+              <PropertyRef Name="D_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Donorratin__D_ID__20C1E124">
+          <End Role="DonorDetails" Type="Self.DonorDetails" Multiplicity="1" />
+          <End Role="Donorratings" Type="Self.Donorratings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonorDetails">
+              <PropertyRef Name="D_id" />
+            </Principal>
+            <Dependent Role="Donorratings">
+              <PropertyRef Name="D_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Records__D_ID__267ABA7A">
+          <End Role="DonorDetails" Type="Self.DonorDetails" Multiplicity="1" />
+          <End Role="Records" Type="Self.Records" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonorDetails">
+              <PropertyRef Name="D_id" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="D_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Records__N_ID__276EDEB3">
+          <End Role="NeedyDetails" Type="Self.NeedyDetails" Multiplicity="1" />
+          <End Role="Records" Type="Self.Records" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NeedyDetails">
+              <PropertyRef Name="N_id" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="N_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Records__P_ID__286302EC">
+          <End Role="Donationtable" Type="Self.Donationtable" Multiplicity="1" />
+          <End Role="Records" Type="Self.Records" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donationtable">
+              <PropertyRef Name="Productid" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="P_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__D_ID__1CF15040">
+          <End Role="DonorDetails" Type="Self.DonorDetails" Multiplicity="1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonorDetails">
+              <PropertyRef Name="D_id" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="D_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__N_ID__1DE57479">
+          <End Role="NeedyDetails" Type="Self.NeedyDetails" Multiplicity="1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NeedyDetails">
+              <PropertyRef Name="N_id" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="N_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__P_ID__1ED998B2">
+          <End Role="Donationtable" Type="Self.Donationtable" Multiplicity="1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donationtable">
+              <PropertyRef Name="Productid" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="P_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HumanitarianAidModelStoreContainer">
+          <EntitySet Name="AdminDetails" EntityType="Self.AdminDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Appeal" EntityType="Self.Appeal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Donation" EntityType="Self.Donation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Donationdetails" EntityType="Self.Donationdetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Donationtable" EntityType="Self.Donationtable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DonorActivation" EntityType="Self.DonorActivation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DonorDetails" EntityType="Self.DonorDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogInAdmin" EntityType="Self.LogInAdmin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NeedyActivation" EntityType="Self.NeedyActivation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NeedyDetails" EntityType="Self.NeedyDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Records" EntityType="Self.Records" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Records1" EntityType="Self.Records1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DonationCount" EntityType="Self.DonationCount" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DonationCount].[D_ID] AS [D_ID], 
+    [DonationCount].[NoOfDonatedProducts] AS [NoOfDonatedProducts]
+    FROM [dbo].[DonationCount] AS [DonationCount]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Donorratings" EntityType="Self.Donorratings" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Donorratings].[D_ID] AS [D_ID], 
+    [Donorratings].[DonorRatings] AS [DonorRatings]
+    FROM [dbo].[Donorratings] AS [Donorratings]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Ratings" EntityType="Self.Ratings" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Ratings].[LowestSale] AS [LowestSale], 
+    [Ratings].[HeighestSale] AS [HeighestSale], 
+    [Ratings].[ratings] AS [ratings]
+    FROM [dbo].[Ratings] AS [Ratings]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__DonationCo__D_ID__239E4DCF" Association="Self.FK__DonationCo__D_ID__239E4DCF">
+            <End Role="DonorDetails" EntitySet="DonorDetails" />
+            <End Role="DonationCount" EntitySet="DonationCount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Donationd__Procd__1A14E395" Association="Self.FK__Donationd__Procd__1A14E395">
+            <End Role="Donationtable" EntitySet="Donationtable" />
+            <End Role="Donationdetails" EntitySet="Donationdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Donationde__D_ID__1920BF5C" Association="Self.FK__Donationde__D_ID__1920BF5C">
+            <End Role="DonorDetails" EntitySet="DonorDetails" />
+            <End Role="Donationdetails" EntitySet="Donationdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Donationta__D_ID__164452B1" Association="Self.FK__Donationta__D_ID__164452B1">
+            <End Role="DonorDetails" EntitySet="DonorDetails" />
+            <End Role="Donationtable" EntitySet="Donationtable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Donorratin__D_ID__20C1E124" Association="Self.FK__Donorratin__D_ID__20C1E124">
+            <End Role="DonorDetails" EntitySet="DonorDetails" />
+            <End Role="Donorratings" EntitySet="Donorratings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Records__D_ID__267ABA7A" Association="Self.FK__Records__D_ID__267ABA7A">
+            <End Role="DonorDetails" EntitySet="DonorDetails" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Records__N_ID__276EDEB3" Association="Self.FK__Records__N_ID__276EDEB3">
+            <End Role="NeedyDetails" EntitySet="NeedyDetails" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Records__P_ID__286302EC" Association="Self.FK__Records__P_ID__286302EC">
+            <End Role="Donationtable" EntitySet="Donationtable" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__D_ID__1CF15040" Association="Self.FK__Request__D_ID__1CF15040">
+            <End Role="DonorDetails" EntitySet="DonorDetails" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__N_ID__1DE57479" Association="Self.FK__Request__N_ID__1DE57479">
+            <End Role="NeedyDetails" EntitySet="NeedyDetails" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__P_ID__1ED998B2" Association="Self.FK__Request__P_ID__1ED998B2">
+            <End Role="Donationtable" EntitySet="Donationtable" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HumanitarianAidModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminDetail">
+          <Key>
+            <PropertyRef Name="A_id" />
+          </Key>
+          <Property Name="A_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="A_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="A_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="A_pass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="A_gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="A_DOB" Type="DateTime" Precision="0" />
+          <Property Name="A_address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="A_phoneNo" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Donationdetail">
+          <Key>
+            <PropertyRef Name="Donationid" />
+          </Key>
+          <Property Name="Donationid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="D_ID" Type="Int32" Nullable="false" />
+          <Property Name="ProcductID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Donationtable" Relationship="Self.FK__Donationd__Procd__1A14E395" FromRole="Donationdetails" ToRole="Donationtable" />
+          <NavigationProperty Name="DonorDetail" Relationship="Self.FK__Donationde__D_ID__1920BF5C" FromRole="Donationdetails" ToRole="DonorDetails" />
+        </EntityType>
+        <EntityType Name="Donationtable">
+          <Key>
+            <PropertyRef Name="Productid" />
+          </Key>
+          <Property Name="Productid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Producttype" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Productname" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Unit" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOfDonation" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="D_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Donationdetails" Relationship="Self.FK__Donationd__Procd__1A14E395" FromRole="Donationtable" ToRole="Donationdetails" />
+          <NavigationProperty Name="DonorDetail" Relationship="Self.FK__Donationta__D_ID__164452B1" FromRole="Donationtable" ToRole="DonorDetails" />
+          <NavigationProperty Name="Records" Relationship="Self.FK__Records__P_ID__286302EC" FromRole="Donationtable" ToRole="Records" />
+          <NavigationProperty Name="Requests" Relationship="Self.FK__Request__P_ID__1ED998B2" FromRole="Donationtable" ToRole="Request" />
+        </EntityType>
+        <EntityType Name="DonorDetail">
+          <Key>
+            <PropertyRef Name="D_id" />
+          </Key>
+          <Property Name="D_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="D_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="D_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="D_Password" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="D_ConfirmPassword" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="D_dob" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="D_age" Type="Int32" Nullable="false" />
+          <Property Name="D_annualincome" Type="Int32" Nullable="false" />
+          <Property Name="D_gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="D_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="D_phoneNo" Type="Int32" Nullable="false" />
+          <Property Name="D_nationality" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="D_occupation" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Donationdetails" Relationship="Self.FK__Donationde__D_ID__1920BF5C" FromRole="DonorDetails" ToRole="Donationdetails" />
+          <NavigationProperty Name="Donationtables" Relationship="Self.FK__Donationta__D_ID__164452B1" FromRole="DonorDetails" ToRole="Donationtable" />
+          <NavigationProperty Name="DonationCounts" Relationship="Self.FK__DonationCo__D_ID__239E4DCF" FromRole="DonorDetails" ToRole="DonationCount" />
+          <NavigationProperty Name="Donorratings" Relationship="Self.FK__Donorratin__D_ID__20C1E124" FromRole="DonorDetails" ToRole="Donorratings" />
+          <NavigationProperty Name="Records" Relationship="Self.FK__Records__D_ID__267ABA7A" FromRole="DonorDetails" ToRole="Records" />
+          <NavigationProperty Name="Requests" Relationship="Self.FK__Request__D_ID__1CF15040" FromRole="DonorDetails" ToRole="Request" />
+        </EntityType>
+        <EntityType Name="LogInAdmin">
+          <Key>
+            <PropertyRef Name="A_pass" />
+          </Key>
+          <Property Name="A_pass" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="A_Mail" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NeedyDetail">
+          <Key>
+            <PropertyRef Name="N_id" />
+          </Key>
+          <Property Name="N_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="N_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="N_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="N_Password" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="N_ConfirmPassword" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="N_dob" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="N_age" Type="Int32" Nullable="false" />
+          <Property Name="N_annualincome" Type="Int32" />
+          <Property Name="N_gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="N_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="N_phoneNo" Type="Int32" Nullable="false" />
+          <Property Name="N_nationality" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="N_occupation" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Records" Relationship="Self.FK__Records__N_ID__276EDEB3" FromRole="NeedyDetails" ToRole="Records" />
+          <NavigationProperty Name="Requests" Relationship="Self.FK__Request__N_ID__1DE57479" FromRole="NeedyDetails" ToRole="Request" />
+        </EntityType>
+        <EntityType Name="Record">
+          <Key>
+            <PropertyRef Name="SL" />
+          </Key>
+          <Property Name="SL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="D_ID" Type="Int32" Nullable="false" />
+          <Property Name="N_ID" Type="Int32" Nullable="false" />
+          <Property Name="P_ID" Type="Int32" Nullable="false" />
+          <Property Name="R_ProductName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="unit" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Donationtable" Relationship="Self.FK__Records__P_ID__286302EC" FromRole="Records" ToRole="Donationtable" />
+          <NavigationProperty Name="DonorDetail" Relationship="Self.FK__Records__D_ID__267ABA7A" FromRole="Records" ToRole="DonorDetails" />
+          <NavigationProperty Name="NeedyDetail" Relationship="Self.FK__Records__N_ID__276EDEB3" FromRole="Records" ToRole="NeedyDetails" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="SL" />
+          </Key>
+          <Property Name="SL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="D_ID" Type="Int32" Nullable="false" />
+          <Property Name="N_ID" Type="Int32" Nullable="false" />
+          <Property Name="P_ID" Type="Int32" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="unit" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Donationtable" Relationship="Self.FK__Request__P_ID__1ED998B2" FromRole="Request" ToRole="Donationtable" />
+          <NavigationProperty Name="DonorDetail" Relationship="Self.FK__Request__D_ID__1CF15040" FromRole="Request" ToRole="DonorDetails" />
+          <NavigationProperty Name="NeedyDetail" Relationship="Self.FK__Request__N_ID__1DE57479" FromRole="Request" ToRole="NeedyDetails" />
+        </EntityType>
+        <EntityType Name="DonationCount">
+          <Key>
+            <PropertyRef Name="D_ID" />
+            <PropertyRef Name="NoOfDonatedProducts" />
+          </Key>
+          <Property Name="D_ID" Type="Int32" Nullable="false" />
+          <Property Name="NoOfDonatedProducts" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DonorDetail" Relationship="Self.FK__DonationCo__D_ID__239E4DCF" FromRole="DonationCount" ToRole="DonorDetails" />
+        </EntityType>
+        <EntityType Name="Donorrating">
+          <Key>
+            <PropertyRef Name="D_ID" />
+            <PropertyRef Name="DonorRatings" />
+          </Key>
+          <Property Name="D_ID" Type="Int32" Nullable="false" />
+          <Property Name="DonorRatings" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DonorDetail" Relationship="Self.FK__Donorratin__D_ID__20C1E124" FromRole="Donorratings" ToRole="DonorDetails" />
+        </EntityType>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="LowestSale" />
+            <PropertyRef Name="HeighestSale" />
+          </Key>
+          <Property Name="LowestSale" Type="Int32" Nullable="false" />
+          <Property Name="HeighestSale" Type="Int32" Nullable="false" />
+          <Property Name="ratings" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__Donationd__Procd__1A14E395">
+          <End Role="Donationtable" Type="Self.Donationtable" Multiplicity="1" />
+          <End Role="Donationdetails" Type="Self.Donationdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donationtable">
+              <PropertyRef Name="Productid" />
+            </Principal>
+            <Dependent Role="Donationdetails">
+              <PropertyRef Name="ProcductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Donationde__D_ID__1920BF5C">
+          <End Role="DonorDetails" Type="Self.DonorDetail" Multiplicity="1" />
+          <End Role="Donationdetails" Type="Self.Donationdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonorDetails">
+              <PropertyRef Name="D_id" />
+            </Principal>
+            <Dependent Role="Donationdetails">
+              <PropertyRef Name="D_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Donationta__D_ID__164452B1">
+          <End Role="DonorDetails" Type="Self.DonorDetail" Multiplicity="1" />
+          <End Role="Donationtable" Type="Self.Donationtable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonorDetails">
+              <PropertyRef Name="D_id" />
+            </Principal>
+            <Dependent Role="Donationtable">
+              <PropertyRef Name="D_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Records__P_ID__286302EC">
+          <End Role="Donationtable" Type="Self.Donationtable" Multiplicity="1" />
+          <End Role="Records" Type="Self.Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donationtable">
+              <PropertyRef Name="Productid" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="P_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__P_ID__1ED998B2">
+          <End Role="Donationtable" Type="Self.Donationtable" Multiplicity="1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donationtable">
+              <PropertyRef Name="Productid" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="P_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DonationCo__D_ID__239E4DCF">
+          <End Role="DonorDetails" Type="Self.DonorDetail" Multiplicity="1" />
+          <End Role="DonationCount" Type="Self.DonationCount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonorDetails">
+              <PropertyRef Name="D_id" />
+            </Principal>
+            <Dependent Role="DonationCount">
+              <PropertyRef Name="D_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Donorratin__D_ID__20C1E124">
+          <End Role="DonorDetails" Type="Self.DonorDetail" Multiplicity="1" />
+          <End Role="Donorratings" Type="Self.Donorrating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonorDetails">
+              <PropertyRef Name="D_id" />
+            </Principal>
+            <Dependent Role="Donorratings">
+              <PropertyRef Name="D_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Records__D_ID__267ABA7A">
+          <End Role="DonorDetails" Type="Self.DonorDetail" Multiplicity="1" />
+          <End Role="Records" Type="Self.Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonorDetails">
+              <PropertyRef Name="D_id" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="D_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__D_ID__1CF15040">
+          <End Role="DonorDetails" Type="Self.DonorDetail" Multiplicity="1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonorDetails">
+              <PropertyRef Name="D_id" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="D_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Records__N_ID__276EDEB3">
+          <End Role="NeedyDetails" Type="Self.NeedyDetail" Multiplicity="1" />
+          <End Role="Records" Type="Self.Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NeedyDetails">
+              <PropertyRef Name="N_id" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="N_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__N_ID__1DE57479">
+          <End Role="NeedyDetails" Type="Self.NeedyDetail" Multiplicity="1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NeedyDetails">
+              <PropertyRef Name="N_id" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="N_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HumanitarianAidEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminDetails" EntityType="Self.AdminDetail" />
+          <EntitySet Name="Donationdetails" EntityType="Self.Donationdetail" />
+          <EntitySet Name="Donationtables" EntityType="Self.Donationtable" />
+          <EntitySet Name="DonorDetails" EntityType="Self.DonorDetail" />
+          <EntitySet Name="LogInAdmins" EntityType="Self.LogInAdmin" />
+          <EntitySet Name="NeedyDetails" EntityType="Self.NeedyDetail" />
+          <EntitySet Name="Records" EntityType="Self.Record" />
+          <EntitySet Name="Requests" EntityType="Self.Request" />
+          <EntitySet Name="DonationCounts" EntityType="Self.DonationCount" />
+          <EntitySet Name="Donorratings" EntityType="Self.Donorrating" />
+          <EntitySet Name="Ratings" EntityType="Self.Rating" />
+          <AssociationSet Name="FK__Donationd__Procd__1A14E395" Association="Self.FK__Donationd__Procd__1A14E395">
+            <End Role="Donationtable" EntitySet="Donationtables" />
+            <End Role="Donationdetails" EntitySet="Donationdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Donationde__D_ID__1920BF5C" Association="Self.FK__Donationde__D_ID__1920BF5C">
+            <End Role="DonorDetails" EntitySet="DonorDetails" />
+            <End Role="Donationdetails" EntitySet="Donationdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Donationta__D_ID__164452B1" Association="Self.FK__Donationta__D_ID__164452B1">
+            <End Role="DonorDetails" EntitySet="DonorDetails" />
+            <End Role="Donationtable" EntitySet="Donationtables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Records__P_ID__286302EC" Association="Self.FK__Records__P_ID__286302EC">
+            <End Role="Donationtable" EntitySet="Donationtables" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__P_ID__1ED998B2" Association="Self.FK__Request__P_ID__1ED998B2">
+            <End Role="Donationtable" EntitySet="Donationtables" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DonationCo__D_ID__239E4DCF" Association="Self.FK__DonationCo__D_ID__239E4DCF">
+            <End Role="DonorDetails" EntitySet="DonorDetails" />
+            <End Role="DonationCount" EntitySet="DonationCounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Donorratin__D_ID__20C1E124" Association="Self.FK__Donorratin__D_ID__20C1E124">
+            <End Role="DonorDetails" EntitySet="DonorDetails" />
+            <End Role="Donorratings" EntitySet="Donorratings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Records__D_ID__267ABA7A" Association="Self.FK__Records__D_ID__267ABA7A">
+            <End Role="DonorDetails" EntitySet="DonorDetails" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__D_ID__1CF15040" Association="Self.FK__Request__D_ID__1CF15040">
+            <End Role="DonorDetails" EntitySet="DonorDetails" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Records__N_ID__276EDEB3" Association="Self.FK__Records__N_ID__276EDEB3">
+            <End Role="NeedyDetails" EntitySet="NeedyDetails" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__N_ID__1DE57479" Association="Self.FK__Request__N_ID__1DE57479">
+            <End Role="NeedyDetails" EntitySet="NeedyDetails" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+          <EntitySet Name="Appeals" EntityType="HumanitarianAidModel.Appeal" />
+          <EntitySet Name="Donations" EntityType="HumanitarianAidModel.Donation" />
+          <EntitySet Name="Records1" EntityType="HumanitarianAidModel.Records1" />
+          <EntitySet Name="DonorActivations" EntityType="HumanitarianAidModel.DonorActivation" />
+          <EntitySet Name="NeedyActivations" EntityType="HumanitarianAidModel.NeedyActivation" />
+        </EntityContainer>
+        <EntityType Name="Appeal">
+          <Key>
+            <PropertyRef Name="AppealId" />
+          </Key>
+          <Property Name="AppealId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="N_id" Type="Int32" />
+          <Property Name="Productname" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Story" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Donation">
+          <Key>
+            <PropertyRef Name="DonationId" />
+          </Key>
+          <Property Name="DonationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="D_id" Type="Int32" />
+          <Property Name="Productname" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Records1">
+          <Key>
+            <PropertyRef Name="SL" />
+          </Key>
+          <Property Name="SL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="D_ID" Type="Int32" Nullable="false" />
+          <Property Name="N_id" Type="Int32" Nullable="false" />
+          <Property Name="AppealId" Type="Int32" Nullable="false" />
+          <Property Name="Productname" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Unit" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DonorActivation">
+          <Key>
+            <PropertyRef Name="D_Id" />
+          </Key>
+          <Property Name="D_Id" Type="Int32" Nullable="false" />
+          <Property Name="ActivationCode" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NeedyActivation">
+          <Key>
+            <PropertyRef Name="N_Id" />
+          </Key>
+          <Property Name="N_Id" Type="Int32" Nullable="false" />
+          <Property Name="ActivationCode" Type="Guid" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HumanitarianAidModelStoreContainer" CdmEntityContainer="HumanitarianAidEntities">
+          <EntitySetMapping Name="AdminDetails">
+            <EntityTypeMapping TypeName="HumanitarianAidModel.AdminDetail">
+              <MappingFragment StoreEntitySet="AdminDetails">
+                <ScalarProperty Name="A_id" ColumnName="A_id" />
+                <ScalarProperty Name="A_name" ColumnName="A_name" />
+                <ScalarProperty Name="A_mail" ColumnName="A_mail" />
+                <ScalarProperty Name="A_pass" ColumnName="A_pass" />
+                <ScalarProperty Name="A_gender" ColumnName="A_gender" />
+                <ScalarProperty Name="A_DOB" ColumnName="A_DOB" />
+                <ScalarProperty Name="A_address" ColumnName="A_address" />
+                <ScalarProperty Name="A_phoneNo" ColumnName="A_phoneNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Donationdetails">
+            <EntityTypeMapping TypeName="HumanitarianAidModel.Donationdetail">
+              <MappingFragment StoreEntitySet="Donationdetails">
+                <ScalarProperty Name="Donationid" ColumnName="Donationid" />
+                <ScalarProperty Name="D_ID" ColumnName="D_ID" />
+                <ScalarProperty Name="ProcductID" ColumnName="ProcductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Donationtables">
+            <EntityTypeMapping TypeName="HumanitarianAidModel.Donationtable">
+              <MappingFragment StoreEntitySet="Donationtable">
+                <ScalarProperty Name="Productid" ColumnName="Productid" />
+                <ScalarProperty Name="Producttype" ColumnName="Producttype" />
+                <ScalarProperty Name="Productname" ColumnName="Productname" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="DateOfDonation" ColumnName="DateOfDonation" />
+                <ScalarProperty Name="D_ID" ColumnName="D_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DonorDetails">
+            <EntityTypeMapping TypeName="HumanitarianAidModel.DonorDetail">
+              <MappingFragment StoreEntitySet="DonorDetails">
+                <ScalarProperty Name="D_id" ColumnName="D_id" />
+                <ScalarProperty Name="D_name" ColumnName="D_name" />
+                <ScalarProperty Name="D_mail" ColumnName="D_mail" />
+                <ScalarProperty Name="D_Password" ColumnName="D_Password" />
+                <ScalarProperty Name="D_ConfirmPassword" ColumnName="D_ConfirmPassword" />
+                <ScalarProperty Name="D_dob" ColumnName="D_dob" />
+                <ScalarProperty Name="D_age" ColumnName="D_age" />
+                <ScalarProperty Name="D_annualincome" ColumnName="D_annualincome" />
+                <ScalarProperty Name="D_gender" ColumnName="D_gender" />
+                <ScalarProperty Name="D_address" ColumnName="D_address" />
+                <ScalarProperty Name="D_phoneNo" ColumnName="D_phoneNo" />
+                <ScalarProperty Name="D_nationality" ColumnName="D_nationality" />
+                <ScalarProperty Name="D_occupation" ColumnName="D_occupation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogInAdmins">
+            <EntityTypeMapping TypeName="HumanitarianAidModel.LogInAdmin">
+              <MappingFragment StoreEntitySet="LogInAdmin">
+                <ScalarProperty Name="A_pass" ColumnName="A_pass" />
+                <ScalarProperty Name="A_Mail" ColumnName="A_Mail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NeedyDetails">
+            <EntityTypeMapping TypeName="HumanitarianAidModel.NeedyDetail">
+              <MappingFragment StoreEntitySet="NeedyDetails">
+                <ScalarProperty Name="N_id" ColumnName="N_id" />
+                <ScalarProperty Name="N_name" ColumnName="N_name" />
+                <ScalarProperty Name="N_mail" ColumnName="N_mail" />
+                <ScalarProperty Name="N_Password" ColumnName="N_Password" />
+                <ScalarProperty Name="N_ConfirmPassword" ColumnName="N_ConfirmPassword" />
+                <ScalarProperty Name="N_dob" ColumnName="N_dob" />
+                <ScalarProperty Name="N_age" ColumnName="N_age" />
+                <ScalarProperty Name="N_annualincome" ColumnName="N_annualincome" />
+                <ScalarProperty Name="N_gender" ColumnName="N_gender" />
+                <ScalarProperty Name="N_address" ColumnName="N_address" />
+                <ScalarProperty Name="N_phoneNo" ColumnName="N_phoneNo" />
+                <ScalarProperty Name="N_nationality" ColumnName="N_nationality" />
+                <ScalarProperty Name="N_occupation" ColumnName="N_occupation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Records">
+            <EntityTypeMapping TypeName="HumanitarianAidModel.Record">
+              <MappingFragment StoreEntitySet="Records">
+                <ScalarProperty Name="SL" ColumnName="SL" />
+                <ScalarProperty Name="D_ID" ColumnName="D_ID" />
+                <ScalarProperty Name="N_ID" ColumnName="N_ID" />
+                <ScalarProperty Name="P_ID" ColumnName="P_ID" />
+                <ScalarProperty Name="R_ProductName" ColumnName="R_ProductName" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="unit" ColumnName="unit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Requests">
+            <EntityTypeMapping TypeName="HumanitarianAidModel.Request">
+              <MappingFragment StoreEntitySet="Request">
+                <ScalarProperty Name="SL" ColumnName="SL" />
+                <ScalarProperty Name="D_ID" ColumnName="D_ID" />
+                <ScalarProperty Name="N_ID" ColumnName="N_ID" />
+                <ScalarProperty Name="P_ID" ColumnName="P_ID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="unit" ColumnName="unit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DonationCounts">
+            <EntityTypeMapping TypeName="HumanitarianAidModel.DonationCount">
+              <MappingFragment StoreEntitySet="DonationCount">
+                <ScalarProperty Name="D_ID" ColumnName="D_ID" />
+                <ScalarProperty Name="NoOfDonatedProducts" ColumnName="NoOfDonatedProducts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Donorratings">
+            <EntityTypeMapping TypeName="HumanitarianAidModel.Donorrating">
+              <MappingFragment StoreEntitySet="Donorratings">
+                <ScalarProperty Name="D_ID" ColumnName="D_ID" />
+                <ScalarProperty Name="DonorRatings" ColumnName="DonorRatings" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ratings">
+            <EntityTypeMapping TypeName="HumanitarianAidModel.Rating">
+              <MappingFragment StoreEntitySet="Ratings">
+                <ScalarProperty Name="LowestSale" ColumnName="LowestSale" />
+                <ScalarProperty Name="HeighestSale" ColumnName="HeighestSale" />
+                <ScalarProperty Name="ratings" ColumnName="ratings" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Appeals">
+            <EntityTypeMapping TypeName="HumanitarianAidModel.Appeal">
+              <MappingFragment StoreEntitySet="Appeal">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Story" ColumnName="Story" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Productname" ColumnName="Productname" />
+                <ScalarProperty Name="N_id" ColumnName="N_id" />
+                <ScalarProperty Name="AppealId" ColumnName="AppealId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Donations">
+            <EntityTypeMapping TypeName="HumanitarianAidModel.Donation">
+              <MappingFragment StoreEntitySet="Donation">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Productname" ColumnName="Productname" />
+                <ScalarProperty Name="D_id" ColumnName="D_id" />
+                <ScalarProperty Name="DonationId" ColumnName="DonationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Records1">
+            <EntityTypeMapping TypeName="HumanitarianAidModel.Records1">
+              <MappingFragment StoreEntitySet="Records1">
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Productname" ColumnName="Productname" />
+                <ScalarProperty Name="AppealId" ColumnName="AppealId" />
+                <ScalarProperty Name="N_id" ColumnName="N_id" />
+                <ScalarProperty Name="D_ID" ColumnName="D_ID" />
+                <ScalarProperty Name="SL" ColumnName="SL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DonorActivations">
+            <EntityTypeMapping TypeName="HumanitarianAidModel.DonorActivation">
+              <MappingFragment StoreEntitySet="DonorActivation">
+                <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+                <ScalarProperty Name="D_Id" ColumnName="D_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NeedyActivations">
+            <EntityTypeMapping TypeName="HumanitarianAidModel.NeedyActivation">
+              <MappingFragment StoreEntitySet="NeedyActivation">
+                <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+                <ScalarProperty Name="N_Id" ColumnName="N_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
